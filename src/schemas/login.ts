@@ -1,8 +1,8 @@
-import {z} from 'zod'
+import { z } from 'zod'
 
 const loginSchema = z.object({
-    email: z.string().email({message: 'Invalid email'}),
-    password: z.string().min(6, {message: 'Password must be at least 6 characters long'})
+    email: z.string().min(1, { message: 'Email is required' }).transform(email => email.toLowerCase()),
+    password: z.string().min(1, { message: 'Password is required' })
 })
 
 export default loginSchema
